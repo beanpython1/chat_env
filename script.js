@@ -1,8 +1,8 @@
 require('dotenv').config(); // Load environment variables
 
 const express = require('express');
+const fetch = require('node-fetch'); // Use require for CommonJS
 const app = express();
-const fetch = (await import('node-fetch')).default;
 
 const airtableApiKey = process.env.AIRTABLE_API_KEY;
 const baseId = process.env.BASE_ID;
