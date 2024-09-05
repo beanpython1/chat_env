@@ -33,7 +33,7 @@ require('dotenv').config(); // Load environment variables
   }
 
   // Schedule the function to run every 12 hours
-  const interval = 1000; // 12 hours in milliseconds
+  const interval = 12 * 60 * 60 * 1000; // 12 hours in milliseconds
   setInterval(deleteMessages, interval);
 
   // Run immediately on script start
