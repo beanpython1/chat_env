@@ -11,7 +11,7 @@ const app = express();
 
 // CORS configuration
 const corsOptions = {
-  origin: ['https://nathanlance.me', 'http://localhost:5500'], // Allow your domain and localhost
+  origin: ['https://nathanlance.me', 'http://127.0.0.1:5500/'], // Allow your domain and localhost
 };
 
 
