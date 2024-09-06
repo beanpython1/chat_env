@@ -8,7 +8,13 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+// CORS configuration
+const corsOptions = {
+  origin: 'https://nathanlance.me', // Allow only your domain
+};
+
+app.use(cors(corsOptions));
 app.use(express.json()); // To parse JSON bodies
 
 // Initialize Firebase Admin SDK
@@ -18,6 +24,13 @@ admin.initializeApp({
 
 // Route to get Firebase config securely
 app.get('/config', (req, res) => {
+  const allowedOrigin = 'https://nathanlance.me'; // Adjust if using HTTP or different domain
+  
+  // Check if the request origin matches
+  if (req.get('origin') !== allowedOrigin) {
+    return res.status(403).json({ error: 'Forbidden' });
+  }
+  
   res.json({
     apiKey: process.env.API_KEY,
     authDomain: process.env.AUTH_DOMAIN,
