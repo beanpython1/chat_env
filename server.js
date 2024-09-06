@@ -11,8 +11,9 @@ const app = express();
 
 // CORS configuration
 const corsOptions = {
-  origin: 'https://nathanlance.me', // Allow only your domain
+  origin: ['https://nathanlance.me', 'http://localhost:5500'], // Allow your domain and localhost
 };
+
 
 app.use(cors(corsOptions));
 app.use(express.json()); // To parse JSON bodies
